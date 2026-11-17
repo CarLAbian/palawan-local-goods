@@ -1,0 +1,30 @@
+{% comment %}
+  These values come from product metafields in the custom namespace.
+  The .value property reads the saved value from each metafield.
+{% endcomment %}
+{%- liquid
+  assign origin = product.metafields.custom.origin.value
+  assign shelf_life = product.metafields.custom.shelf_life.value
+  assign ingredients = product.metafields.custom.ingredients.value
+-%}
+
+{% comment %} Hide the entire block until at least one product detail is filled in. {% endcomment %}
+{%- if origin != blank or shelf_life != blank or ingredients != blank -%}
+  <section class="product__description rte" {{ block.shopify_attributes }}>
+    <h2 class="h4">Origin and details</h2>
+    <dl>
+      {%- if origin != blank -%}
+        <dt>Made in</dt>
+        <dd>{{ origin | escape }}</dd>
+      {%- endif -%}
+      {%- if shelf_life != blank -%}
+        <dt>Shelf life</dt>
+        <dd>{{ shelf_life | escape }}</dd>
+      {%- endif -%}
+      {%- if ingredients != blank -%}
+        <dt>Ingredients</dt>
+        <dd>{{ ingredients | escape }}</dd>
+      {%- endif -%}
+    </dl>
+  </section>
+{%- endif -%}

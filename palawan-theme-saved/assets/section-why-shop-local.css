@@ -1,0 +1,14 @@
+.why-shop-local__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.why-shop-local__card {
+  height: 100%;
+  padding: 2rem;
+}
+
+.why-shop-local__card h3 {
+  margin-top: 0;
+}
